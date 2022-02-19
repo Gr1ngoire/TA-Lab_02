@@ -2,15 +2,21 @@
 import math
 
 
-def calculate_crazy_roots(start, depth):
-    if (not int(start)) or (not int(depth)):
-        return "Depth ans start params must be integer"
+def calculate_crazy_roots(start, diff, depth, init_start):
+    if (not int(start)) or (not int(depth)) or (diff >= start):
+        return "Depth ans start params must be integer and diff must be less than start"
 
-    return (start - 5) * math.sqrt(start + (0 if start - depth == 5 else calculate_crazy_roots(start + 1, depth)))
+    print("adder", start)
+    print("mnogitel", start - diff)
+    return (start - diff) * math.sqrt(
+        start + (0 if start - depth == init_start - 1 else calculate_crazy_roots(start + 1, diff, depth, init_start)))
 
-    # if start - depth != 6:
-    #     print(start, start - 5)
-    #     return (start - 5) * math.sqrt(start + calculate_crazy_roots(start + 1, depth))
+    # if start - depth != init_start:
+    #     print("Mnogitel", start, start - diff)
+    #     return (start - diff) * math.sqrt(start + calculate_crazy_roots(start + 1, diff, depth, init_start))
     # else:
     #     print("final", start)
-    #     return start
+    #     return 0
+
+def crazy_roots_calculator_wrapper(number, depth):
+    return calculate_crazy_roots(number, number - 1, depth, number)
