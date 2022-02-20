@@ -1,5 +1,12 @@
-import task1
-import task2
+from iterative_executor import *
+from recursive_executor import *
 
-# print(task1.print_deciaml_division_recursively(12000, 0))
-print(task2.crazy_roots_calculator_wrapper(6, 2))
+recursive_exec = RecursiveExecutor()
+iterative_exec = IterativeExecutor()
+print("Task 1")
+recursive_exec.print_decimal_division(3789)
+print()
+iterative_exec.print_decimal_division(3789)
+print()
+print("Task 2")
+print(recursive_exec.calculate_crazy_roots(6, 2))
